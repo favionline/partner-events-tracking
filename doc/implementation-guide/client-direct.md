@@ -66,6 +66,8 @@ You can place this code anywhere on the order confirmation page. The higher it w
 
 If you are doing something wrong, you should see error messages in web console / developer tools (usually F12 in browser). When you are all set up, you should see network requests being sent to `https://partner-events.favi.{XX}`, where `{XX}` is the country where your e-shop is registered.
 
+Chrome and Chrome-based browsers may not show responses for failed requests, so in order to see helpful error messages from the API, please try using Firefox or the most reliable way is using a "copy as cURL" feature on the request.
+
 If you have a dynamic client application that can send more orders for one page load, you can send multiple events, but always load the tracking script and initialize it just once.
 
 If your e-shop is using Content Security Policy, see the dedicated section below.
