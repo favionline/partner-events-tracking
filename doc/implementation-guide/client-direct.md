@@ -98,12 +98,13 @@ where `order` is an object with the following format:
 
 `orderItem`:
 
-* `id`
-  * required, string
-  * your product ID, must match the ID you are using in XML feed provided to FAVI
-* `name`
-  * required, string
-  * your product name, must match the name you are using in XML feed provided to FAVI
+* `product` - required, object:
+  * `id`
+    * required, string
+    * your product ID, must match the ID you are using in XML feed provided to FAVI
+  * `name`
+    * required, string
+    * your product name, must match the name you are using in XML feed provided to FAVI
 
 `customer`:
 
