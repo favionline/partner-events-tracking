@@ -74,6 +74,8 @@ If your e-shop is using Content Security Policy, see the dedicated section below
 
 ### `createOrder` event
 
+Use this event after an order is created on your e-shop with products that you advertise on FAVI. We will send a review request to the customer.
+
 `createOrder` event is tracked by calling:
 
 ```js
@@ -98,12 +100,13 @@ where `order` is an object with the following format:
 
 `orderItem`:
 
-* `id`
-  * required, string
-  * your product ID, must match the ID you are using in XML feed provided to FAVI
-* `name`
-  * required, string
-  * your product name, must match the name you are using in XML feed provided to FAVI
+* `product` - required, object:
+  * `id`
+    * required, string
+    * your product ID, must match the ID you are using in XML feed provided to FAVI
+  * `name`
+    * required, string
+    * your product name, must match the name you are using in XML feed provided to FAVI
 
 `customer`:
 
