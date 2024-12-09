@@ -58,7 +58,8 @@ Common types used in the API (both requests and responses):
 * `date-string`
   * format conforming to `Y-m-d` according to [PHP date format](https://www.php.net/manual/en/datetime.format.php#refsect1-datetime.format-parameters)
 * `time-string`
-  * format conforming to `Y-m-d\TH:i:s\Z` ([ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) variant) according to [PHP date format](https://www.php.net/manual/en/datetime.format.php#refsect1-datetime.format-parameters)
+  * format conforming to `Y-m-d\TH:i:s.u\Z` ([ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) variant) according to [PHP date format](https://www.php.net/manual/en/datetime.format.php#refsect1-datetime.format-parameters)
+  * note that the time includes microseconds (6 decimal places, including trailing zeroes)
   * note that the time is in UTC (Zulu) time zone
 
 Errors from the API are returned as JSON in this basic format - i.e., it can return multiple errors at once:
@@ -121,6 +122,7 @@ JSON body properties:
   * will be used to decide when to send review request to customer
 * `orderCreatedTime`
   * optional, `time-string`
+    * for backwards compatibility reasons it is allowed to omit microseconds, but it is deprecated, so it is strongly advised to include them
   * using *Server-Side Token* is required for this feature
   * orders can be sent with up to 48 hours delay - e.g., if you are sending orders asynchronously, you have 2 days to send a particular order
 
