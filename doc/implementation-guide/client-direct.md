@@ -32,7 +32,9 @@ In the example below, you can see all these steps:
         window.faviPartnerEventsTracking.queue.push(arguments);
     };
     window.faviPartnerEventsTracking.queue = window.faviPartnerEventsTracking.queue || [];
-    window.faviPartnerEventsTracking('init', '{FAVI-TRACKING-ID}');
+    window.faviPartnerEventsTracking('init', '{FAVI-TRACKING-ID}', {
+        debug: false,
+    });
 
     window.faviPartnerEventsTracking('createOrder', {
         orderId: '1251ddfd-4fd7-46b8-ac92-36d620e2f240',
@@ -60,15 +62,29 @@ In the example below, you can see all these steps:
 <script defer src='https://partner-events.favicdn.net/v1/partnerEventsTracking.js' type="text/javascript"></script>
 ```
 
-where `{FAVI-TRACKING-ID}` is the *Tracking ID* you were assigned by your account manager at FAVI. Read about the `createOrder` object parameter below, to see what is required and in what format.
+where `{FAVI-TRACKING-ID}` is the *Tracking ID* you were assigned by your account manager at FAVI. Read about the event objects below, to see what is required and in what format.
 
-You can place this code anywhere on the order confirmation page. The higher it will be the better chance the event(s) will be sent before the user navigates away. But always initialize the global variables before loading the tracking script.
-
-If you are doing something wrong, you should see error messages in web console / developer tools (usually F12 in browser). When you are all set up, you should see network requests being sent to `https://partner-events.favi.{XX}`, where `{XX}` is the country where your e-shop is registered.
-
-Chrome and Chrome-based browsers may not show responses for failed requests, so in order to see helpful error messages from the API, please try using Firefox or the most reliable way is using a "copy as cURL" feature on the request.
+You can place this code anywhere on the page. The higher it will be the better chance the event(s) will be sent before the user navigates away. But always initialize the global variables before loading the tracking script.
 
 If you have a dynamic client application that can send more orders for one page load, you can send multiple events, but always load the tracking script and initialize it just once.
+
+### How to verify that the events are triggering correctly
+
+The best way to verify that the events are triggering correctly is to turn on the `debug` mode by passing the :
+
+```js
+    window.faviPartnerEventsTracking('init', '{FAVI-TRACKING-ID}', {
+        debug: true,
+    });
+```
+
+Then you will see all the events that are triggered and registered by the tracking script in the browser console / developer tools (usually F12 in browser).
+
+If you are doing something wrong, you should see error messages in web console.
+
+You should also see network requests being sent to `https://partner-events.favi.{XX}`, where `{XX}` is the country where your e-shop is registered.
+
+Chrome and Chrome-based browsers may not show responses for failed requests, so in order to see helpful error messages from the API, please try using Firefox or the most reliable way is using a "copy as cURL" feature on the request.
 
 If your e-shop is using Content Security Policy, see the dedicated section below.
 
