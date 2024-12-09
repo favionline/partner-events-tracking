@@ -106,7 +106,9 @@ There are two main kinds of errors differentiated by the returned HTTP response 
 
 `POST /tracking/{FAVI-TRACKING-ID}/orders`
 
-Use this endpoint whenever an order is created on your e-shop with products that you advertise on FAVI. We will send a review request to the customer.
+Use this endpoint whenever an order is created on your e-shop with products that you advertise on FAVI.
+
+If you send `customer` information (see below), FAVI will send a review request to the customer.
 
 JSON body properties:
 
@@ -116,7 +118,7 @@ JSON body properties:
 * `orderItems`
   * required, array of `orderItem` objects (see below)
 * `customer`
-  * required, `customer` object (see below)
+  * optional, `customer` object (see below)
 * `expectedDeliveryDate`
   * optional, `date-string`
   * will be used to decide when to send review request to customer

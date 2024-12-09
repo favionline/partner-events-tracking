@@ -90,7 +90,9 @@ If your e-shop is using Content Security Policy, see the dedicated section below
 
 ### `createOrder` event
 
-Use this event after an order is created on your e-shop with products that you advertise on FAVI. We will send a review request to the customer.
+Use this event after an order is created on your e-shop with products that you advertise on FAVI.
+
+If you send `customer` information (see below), FAVI will send a review request to the customer.
 
 `createOrder` event is tracked by calling:
 
@@ -108,7 +110,7 @@ where `order` is an object with the following format:
 * `orderItems`
   * required, array of `orderItem` objects (see below)
 * `customer`
-  * required, `customer` object (see below)
+  * optional, `customer` object (see below)
 * `expectedDeliveryDate`
   * optional, string
   * format conforming to `Y-m-d` according to [PHP date format](https://www.php.net/manual/en/datetime.format.php#refsect1-datetime.format-parameters)
