@@ -96,6 +96,8 @@ If your e-shop is using Content Security Policy, see the dedicated section below
 
 Use this event after an order is created on your e-shop with products that you advertise on FAVI.
 
+Also use this endpoint to update the same order (for example when expected delivery date changes) or if you want to provide additional data (for example add customer e-mail for review). Always send complete information for the particular time, not only changed properties.
+
 If you send `customer` information (see below), FAVI will send a review request to the customer.
 
 `createOrder` event is tracked by calling:
