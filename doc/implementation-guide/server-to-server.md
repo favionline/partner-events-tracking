@@ -61,6 +61,16 @@ Common types used in the API (both requests and responses):
   * format conforming to `Y-m-d\TH:i:s.u\Z` ([ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) variant) according to [PHP date format](https://www.php.net/manual/en/datetime.format.php#refsect1-datetime.format-parameters)
   * note that the time includes microseconds (6 decimal places, including trailing zeroes)
   * note that the time is in UTC (Zulu) time zone
+* `money`:
+  * `value`
+    * required, string, format of string is either integer or decimal number
+      * `.` used as decimal separator
+      * no spaces or other characters
+      * there can be no leading zeroes for the whole number part and no trailing zeroes for the fraction part (except for `0.1`, `1.0`, etc.)
+    * number of decimal spaces is limited up to the number of digits the currency supports according to [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217)
+  * `currency`
+    * required, string
+    * 3-letter code according to [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217)
 
 Errors from the API are returned as JSON in this basic format - i.e., it can return multiple errors at once:
 
@@ -117,6 +127,10 @@ JSON body properties:
   * your internal order ID
 * `orderItems`
   * required, array of `orderItem` objects (see below)
+* `totalAmountWithoutVat`
+  * optional, `money` object
+  * total value of the order, including prices of all items, services, discounts, delivery, etc.
+    * without VAT
 * `customer`
   * optional, `customer` object (see below)
 * `expectedDeliveryDate`
@@ -167,6 +181,10 @@ curl --request POST 'https://partner-events.favi.xx/api/v1/tracking/{FAVI-TRACKI
             }
         }
     ],
+    "totalAmountWithoutVat": {
+        "value": "1234.56",
+        "currency": "CZK",
+    },
     "customer": {
         "email": "john.doe@example.com",
         "name": "John Doe"
@@ -191,6 +209,8 @@ Expected `422 Unprocessable Entity` error codes:
 * `order-with-same-id-already-exists`
 * `order-created-time-exceeds-allowed-delay`
 * `order-created-time-cannot-be-in-the-future`
+* `unsupported-currency`
+  * Currency is not currently supported by FAVI. If you need to use it, please contact your contact at FAVI.
 
 ### Change expected delivery date
 

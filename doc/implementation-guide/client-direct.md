@@ -52,6 +52,10 @@ In the example below, you can see all these steps:
                 },
             },
         ],
+        totalAmountWithoutVat: {
+            value: '1234.56',
+            currency: 'CZK',
+        },
         customer: {
             email: 'john.doe@example.com',
             name: 'John Doe',
@@ -109,6 +113,10 @@ where `order` is an object with the following format:
   * your internal order ID
 * `orderItems`
   * required, array of `orderItem` objects (see below)
+* `totalAmountWithoutVat`
+  * optional, `totalAmountWithoutVat` object (see below)
+  * total value of the order, including prices of all items, services, discounts, delivery, etc.
+    * without VAT
 * `customer`
   * optional, `customer` object (see below)
 * `expectedDeliveryDate`
@@ -125,6 +133,17 @@ where `order` is an object with the following format:
   * `name`
     * required, string
     * your product name, must match the name you are using in XML feed provided to FAVI
+
+`totalAmountWithoutVat`:
+  * `value`
+    * required, string, format of string is either integer or decimal number
+      * `.` used as decimal separator
+      * no spaces or other characters
+      * there can be no leading zeroes for the whole number part and no trailing zeroes for the fraction part (except for `0.1`, `1.0`, etc.)
+    * number of decimal spaces is limited up to the number of digits the currency supports according to [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217)
+  * `currency`
+    * required, string
+    * 3-letter code according to [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217)
 
 `customer`:
 
