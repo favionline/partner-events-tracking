@@ -125,7 +125,6 @@ JSON body properties:
 * `orderCreatedTime`
   * optional, `time-string`
     * for backwards compatibility reasons it is allowed to omit microseconds, but it is deprecated, so it is strongly advised to include them
-  * using *Server-Side Token* is required for this feature
   * orders can be sent with up to 48 hours delay - e.g., if you are sending orders asynchronously, you have 2 days to send a particular order
 
 `orderItem`:
