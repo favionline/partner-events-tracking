@@ -51,7 +51,7 @@ All requests:
 
 * use `{FAVI-TRACKING-ID}` which should be replaced by the *Tracking ID* you were assigned by your account manager at FAVI
 * can optionally send the *Server-Side Token* in the `X-Favi-Partner-Events-Server-Side-Token` header (see dedicated section above about this functionality)
-* should be using JSON bodies
+* should be using JSON body
 
 Common types used in the API (both requests and responses):
 
@@ -129,7 +129,7 @@ JSON body properties:
 * `product` - required, object:
   * `id`
     * required, string
-    * your product ID, must match the ID you are using in XML feed provided to FAVI
+    * your internal product ID, the same you are sending to FAVI through XML feed
   * `name`
     * required, string
     * your product name, must match the name you are using in XML feed provided to FAVI
@@ -233,7 +233,7 @@ Expected `422 Unprocessable Entity` error codes:
 
 `POST /tracking/{FAVI-TRACKING-ID}/cancel-order`
 
-If an order, that you sent to FAVI is cancelled, please let us know using this endpoint. This will for example prevent asking the customer for review of product, that he/she never received.
+If an order, that you sent to FAVI, is cancelled, please, let us know using this endpoint. This will for example prevent asking the customer for review of product, that he/she never received.
 
 JSON body properties:
 
