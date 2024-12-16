@@ -10,7 +10,11 @@ There are three main ways how to integrate *FAVI Partner Events Tracking* into y
 2. [client-side (frontend) integration using Google Tag Manager (called GTM)](client-gtm.md),
 3. server-to-server integration using API (called S2S).
 
-The S2S solution is most feature rich, reliable and secure, but requires direct integration into your backend code, which is not feasible for everyone. So pick the integration which most suits your situation.
+One of the client side solutions is needed to measure campaign performance - such as attribution.
+
+The S2S solution is most reliable and secure, but requires direct integration into your backend code, which is not feasible for everyone.
+
+You can pick any solution, or even combination of them - for example it is best to use a client side solution to create an order, but you can send more (or update) information about it later using the S2S solution.
 
 This guide is for the S2S integration, but you can have a look at the other ones using appropriate links.
 
@@ -29,9 +33,11 @@ Using server-to-server integration offers all the possibilities of the client-si
 
 We provide additional security in the form of a *Server-Side Token* - a secret token, which you can send when calling the API.
 
-This can (and is highly recommended) be combined with requiring the *Server-Side Token* for any request for your e-shop. This prevents anyone else, who has access only to your *Tracking ID*, to send events. Typically, if you were using any kind of client-side integration, the *Tracking ID* would have been part of the page and therefore anyone could have seen it.
+This prevents anyone else, who has access only to your *Tracking ID*, to send events. Typically, if you were using any kind of client-side integration, the *Tracking ID* would have been part of the page and therefore anyone could have seen it.
 
 For the same reasons **never use *Server-Side Token* in a public context** - it should ideally never leave your server.
+
+This can be combined with requiring the *Server-Side Token* for any request for your e-shop. But this also means, that the client side solutions are no longer usable and therefore currently this would not support the campaign performance measurement and optimization capabilities of FAVI Partner Events Tracking.
 
 If you want to turn on requiring the *Server-Side Token* for all requests, please contact our account managers, the implementation should follow these steps:
 
