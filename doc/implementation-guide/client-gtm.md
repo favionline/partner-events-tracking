@@ -10,7 +10,11 @@ There are three main ways how to integrate *FAVI Partner Events Tracking* into y
 2. client-side (frontend) integration using Google Tag Manager (called GTM),
 3. [server-to-server integration using API (called S2S)](server-to-server.md).
 
-The S2S solution is most feature rich, reliable and secure, but requires direct integration into your backend code, which is not feasible for everyone. So pick the integration which most suits your situation.
+One of the client side solutions is needed to measure campaign performance - such as attribution.
+
+The S2S solution is most reliable and secure, but requires direct integration into your backend code, which is not feasible for everyone.
+
+You can pick any solution, or even combination of them - for example it is best to use a client side solution to create an order, but you can send more (or update) information about it later using the S2S solution.
 
 This guide is for the GTM integration, but you can have a look at the other ones using appropriate links.
 
