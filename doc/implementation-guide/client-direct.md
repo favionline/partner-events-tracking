@@ -79,6 +79,12 @@ You can place this code anywhere on the page. The higher it will be the better c
 
 If you have a dynamic client application that can send more orders for one page load, you can send multiple events, but always load the tracking script and initialize it just once.
 
+### User consent
+
+To measure campaign performance (e.g., attribution), we store a cookie in the user's browser. Consent to store this cookie is given (or declined) on the FAVI website, and this choice is passed to this tracking code. If consent is not given, no cookie is created.
+
+This means that no further consent is required on your page, and loading this script should not be conditional on any other consent.
+
 ### How to verify that the events are triggering correctly
 
 The best way to verify that the events are triggering correctly is to turn on the `debug` mode by passing the :
